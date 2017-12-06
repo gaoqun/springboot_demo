@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan = "true" scanPeriod = "30 seconds" debug = "false">
+    <springProperty scope = "context" name = "logLevel" source = "log.level"/>
+    <springProperty scope="context" name = "logPath" source="log.path"/>
+    <!--<property key="LOG-HOME" value="/app/logs"/>-->
+    <!--log save path-->
+    <!--<contextName>${LOG-HOME}</contextName>-->
+
+    <!--控制台-->
+    <appender name="console" class = "ch.qos.logback.core.ConsoleAppender">
+        <!--filter level-->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--file-->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logPath}health_info.log</file>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--按分钟滚-->
+            <fileNamePattern>${logPath}health_info.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.haha.health.web" level="info" additivity = "false">
+        <appender-ref ref="console"/>
+    </logger>
+
+    <root level="debug">
+        <appender-ref ref = "console"/>
+        <appender-ref ref = "file"/>
+    </root>
+
+    <!--测试、开发环境-->
+    <springProfile name="test,develop">
+        <logger name="com.haha.health" level="info" />
+    </springProfile>
+
+    <!--生产环境-->
+    <springProfile name="product">
+        <logger name="com.haha.health" level="ERROR" />
+    </springProfile>
+
+
+</configuration>
