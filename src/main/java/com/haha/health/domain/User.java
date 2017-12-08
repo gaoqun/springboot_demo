@@ -9,13 +9,21 @@ public class User {
 
     private Integer id;
     private String username;
-    private String password;
+    private String pwd;
     private Date createTime;
     private String telephone;
     private String nickName;
 
     public Date getCreateTime() {
         return createTime;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public void setCreateTime(Date createTime) {
@@ -54,11 +62,4 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

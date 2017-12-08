@@ -1,5 +1,9 @@
 package com.haha.health.web;
 
+import com.haha.health.service.UserService;
+import com.haha.health.vo.UserVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,9 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("user")
 public class UserController extends BaseController{
 
-    @RequestMapping("userInfo")
-    public void getUserInfo(){
+    @Autowired
+    UserService service;
 
+    @RequestMapping("userInfo/{userId}")
+    public UserVo getUserInfo(@PathVariable("userId")String userId){
+        return service.getUserById(userId);
     }
 
 }
