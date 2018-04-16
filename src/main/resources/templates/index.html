@@ -2,9 +2,43 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <head>
     <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--自适应宽度-->
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link th:href="@{/my/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/my/css/bootstrap-theme.min.css}" rel="stylesheet"/>
     <title>Title</title>
 </head>
 <body>
-    <p th:text="${hello}"></p>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h1 class="panel-heading">访问model</h1>
+    </div>
+    <div class="panel-body">
+        <span th:text="${test.name}"/>
+    </div>
+    <div th:if="${not #lists.isEmpty(tests)}">
+        <div class="panel panel-primary">
+            <h2 class="panel-title">列表</h2>
+        </div>
+        <div class="panel-body">
+            <ul class="panel-group">
+                <li class="list-group-item" th:each="test:${tests}">
+                    <span th:text="${test.name}"></span>
+                    <button class="btn" th:onclick="'getName(\''+${test.name}+'\')'">获取name</button>
+                    <span th:if="${not #lists.isEmpty(time)}">
+                    <span th:text="${#dates.format(time,'yyyy-MM-dd HH:mm:ss')}"></span>
+                </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script th:src="@{/my/js/jquery-2.0.3.min.js}" type="text/javascript"></script>
+<script th:src="@{/my/js/bootstrap.min.js}" type="text/javascript"></script>
+<script>
+    function getName(name) {
+        console.log(name);
+    }
+</script>
 </body>
 </html>

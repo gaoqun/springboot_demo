@@ -1,0 +1,4 @@
+15:03:19.326 default [http-nio-8080-exec-3] DEBUG freemarker.cache - Couldn't find template in cache for "index.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+15:03:19.332 default [http-nio-8080-exec-3] DEBUG freemarker.cache - TemplateLoader.findTemplateSource("index_zh_CN.ftl"): Not found
+15:03:19.332 default [http-nio-8080-exec-3] DEBUG freemarker.cache - TemplateLoader.findTemplateSource("index_zh.ftl"): Not found
+15:03:19.333 default [http-nio-8080-exec-3] DEBUG freemarker.cache - TemplateLoader.findTemplateSource("index.ftl"): Not found
