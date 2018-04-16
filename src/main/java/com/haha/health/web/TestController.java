@@ -2,6 +2,8 @@ package com.haha.health.web;
 
 import com.haha.health.domain.Test;
 import com.haha.health.domain.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +19,11 @@ import java.util.Map;
  */
 //@RestController
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class TestController extends BaseController {
 
+//    Logger logger = LoggerFactory.getLogger(TestController.class);
+    Logger logger = LoggerFactory.getLogger("test");
 
 //    @ResponseBody
     @GetMapping("/hello")
@@ -28,6 +32,7 @@ public class TestController extends BaseController {
         map.put("test",new Test("haha"));
         map.put("time",System.currentTimeMillis());
 
+        logger.warn("------------------------test----------------------");
 
         List<Test> tests = new ArrayList<>();
         Test test1 = new Test("gao1");
@@ -42,6 +47,7 @@ public class TestController extends BaseController {
         tests.add(test4);
         tests.add(test5);
         map.put("tests",tests);
+        int i = 2/0;
         return "index";
     }
 

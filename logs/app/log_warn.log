@@ -1,0 +1,2 @@
+===2018-04-16 18:19:08.806 WARN  org.thymeleaf.templatemode.TemplateMode Line:150 - [THYMELEAF][restartedMain] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+===2018-04-16 18:19:09.128 WARN  test Line:35  - ------------------------test----------------------
