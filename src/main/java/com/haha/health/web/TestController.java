@@ -47,7 +47,6 @@ public class TestController extends BaseController {
         tests.add(test4);
         tests.add(test5);
         map.put("tests",tests);
-        int i = 2/0;
         return "index";
     }
 
